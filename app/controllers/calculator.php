@@ -19,7 +19,7 @@ class Calculator{
     // }
 
     // Custom Method
-    public function calculator($data){
+    public function calculator(array $data): string{
         
         // Get Requested Data
         $this->operator     = $data['operator'];
@@ -27,24 +27,13 @@ class Calculator{
         $this->num2         = $data['second_number'];
      
         // Computation
-        switch ($this->operator) {
-            case 'addition':
-                $result = $this->num1 + $this->num2;
-                break;
-            case 'subtraction':
-                $result = $this->num1 - $this->num2;
-                break;
-            case 'multiplication':
-                $result = $this->num1 * $this->num2;
-                break;
-            case 'division':
-                $result = $this->num1 / $this->num2;
-                break;
-            default:
-                $result = 'Invalid Operations';
-                break;
-        }
-
+        $result = match ($this->operator) {
+            'addition'          => $this->num1 + $this->num2,
+            'subtraction'       => $this->num1 - $this->num2,
+            'multiplidation'    => $this->num1 * $this->num2,
+            'division'          => $this->num1 / $this->num2,
+            default             => $this->getErrorResponse(),
+        };
 
         $response = array(
             'result'    => $result,
@@ -63,9 +52,8 @@ class Calculator{
     }
 
     public static function getErrorResponse(){
-        return "Computation Error";
+        return "Invalid Operations";
     }
-
 
     
 }
