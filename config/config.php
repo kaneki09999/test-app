@@ -1,0 +1,3 @@
+<?php
+
+define('SCHOOL','UCC');

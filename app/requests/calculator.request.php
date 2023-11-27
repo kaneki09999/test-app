@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         // Catch Error
         try {
-            echo $obj->calculator($data); // used the method
+            echo $obj->operations($data); // used the method
         } catch (TypeError $e) {
             echo $obj::getErrorResponse() . " " . $e->getMessage();
         }
