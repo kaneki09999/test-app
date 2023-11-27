@@ -3,9 +3,10 @@
 // For Strict Typing
 declare(strict_types = 1);
 
-// // Load the File
-require_once dirname(__DIR__).'/controllers/calculator.php';
+use App\Controllers\Calculator;
 
+// // Load the File
+require dirname(__DIR__).'../../vendor/autoload.php';
 
 // REQUEST HTTP POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -17,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'second_number' => (int)$_POST['second_number'], // it will convert the string into integers by using (int) 
         );
         
-
         // Call the Class
         $obj = new Calculator();
         

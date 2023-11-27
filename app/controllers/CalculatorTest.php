@@ -1,6 +1,6 @@
 <?php
 
-class Calculator_test {
+class CalculatorTest {
 
     public $request;
     public $response;

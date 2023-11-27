@@ -1,6 +1,9 @@
 <?php
+namespace App\Controllers;
 
-class Calculator{
+class Calculator extends BaseController{
+
+    use Extra;
 
     // Properties
     public string $operator;
@@ -46,23 +49,15 @@ class Calculator{
                 'LINE'      => __LINE__,
                 'NAMESPACE' => __NAMESPACE__,
             ),
-            'status'    => self::SUCCESS
+            'status'    => self::SUCCESS,
+            'message'   => $this->extraMessage(),
         );
         
         return $this->jsonResponse($response);
     }
-
-    // Set Json Response 
-    public function jsonResponse($params){
-        header('Content-Type: application/json');               // application type is json
-        $response = json_encode($params, JSON_PRETTY_PRINT);    // turn into json format
-        
-        return $response;   // e.g Output: { "result": 300,"status": "success"}
-    }
-
+    
     public static function getErrorResponse(){
         return "Invalid Operations";
     }
 
-    
 }
