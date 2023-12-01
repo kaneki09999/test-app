@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /OOP/
+
+# Redirect all requests to Routes.php, except for existing files and directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ Routes/Routes.php [L,QSA]

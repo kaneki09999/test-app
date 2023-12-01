@@ -3,10 +3,10 @@
 // For Strict Typing
 declare(strict_types = 1);
 
-use App\Controllers\Calculator;
+use App\Controllers\CalculatorController;
 
 // // Load the File
-require dirname(__DIR__).'../../vendor/autoload.php';
+require dirname(__DIR__).'/../vendor/autoload.php';
 
 // REQUEST HTTP POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         );
         
         // Call the Class
-        $obj = new Calculator();
+        $obj = new CalculatorController();
         
         // Catch Error
         try {

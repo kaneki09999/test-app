@@ -1,6 +1,8 @@
 <?php
 
-class CalculatorTest {
+use App\Controllers\CalculatorController;
+
+class CalculatorControllerTest {
 
     public $request;
     public $response;
@@ -157,8 +159,8 @@ class CalculatorTest {
 }
 
 
-$obj = new Calculator();
-print_r($obj->sum()); exit;
+// $obj = new CalculatorController();
+// print_r($obj->sum()); exit;
 
 
 

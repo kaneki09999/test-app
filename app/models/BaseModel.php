@@ -8,5 +8,6 @@ class BaseModel{
     // join
     // union
     // in array
+    // query
 
 }

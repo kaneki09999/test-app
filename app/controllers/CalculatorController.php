@@ -1,9 +1,11 @@
 <?php
 namespace App\Controllers;
 
-class Calculator extends BaseController{
+require_once dirname(__DIR__) . '/../vendor/autoload.php';
 
-    use Extra;
+class CalculatorController extends BaseController {
+
+    use ExtraController;
 
     // Properties
     public string $operator;
@@ -58,6 +60,17 @@ class Calculator extends BaseController{
     
     public static function getErrorResponse(){
         return "Invalid Operations";
+    }
+
+    public function test(){
+
+        $response = array(
+            'result' => 'success',
+            'timeStamp' => $this->ping(),
+        );
+
+        return $this->jsonResponse($response);
+
     }
 
 }

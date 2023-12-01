@@ -1,7 +1,9 @@
 <?php
+// ExtraController.php
 namespace App\Controllers;
 
-trait Extra{
+
+trait ExtraController{
     
     public function extraMessage(): string{
         return "Test Traits";

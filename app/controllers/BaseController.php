@@ -20,10 +20,27 @@ class BaseController{
         return $this->request;
     }
 
-    public function ping(){
+    public function ping() {
         date_default_timezone_set('Asia/Manila');
         $timeStamp = time();
-        return $this->jsonResponse($timeStamp);
+        
+        $response = array(
+         
+  
+                'CLASS'     => __CLASS__,
+                'DIRECTORY' => __DIR__,
+                'FILE'      => __FILE__,
+                'FUNCTION'  => __FUNCTION__,
+                'METHOD'    => __METHOD__,
+                'LINE'      => __LINE__,
+                'NAMESPACE' => __NAMESPACE__,
+
+        );
+
+
+
+        return $response;
     }
+
 
 }

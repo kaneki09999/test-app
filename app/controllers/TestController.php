@@ -1,12 +1,13 @@
 <?php
 declare(strict_types = 1 ); // Strict Typing
 
+use App\Controllers\UserController;
 
 // Import file
 require_once 'user.php';
 
 
-Class Test extends User{
+Class TestController extends UserController{
 
     // Properties
     private $firstName;
