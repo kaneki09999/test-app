@@ -50,7 +50,7 @@ class Calculator extends BaseController{
                 'NAMESPACE' => __NAMESPACE__,
             ),
             'status'    => self::SUCCESS,
-            'message'   => $this->extraMessage(),
+            'message'   => $this->extraMessage().$this->errorMessage(),
         );
         
         return $this->jsonResponse($response);
