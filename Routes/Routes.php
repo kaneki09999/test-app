@@ -20,17 +20,18 @@ use App\Controllers\UserController;
 //     // Add more routes as needed
 // }
 
-
 if ($_SERVER['REQUEST_URI'] === '/OOP/User/test') {
-    require_once '../App/Controllers/UserController.php';
+    require_once dirname(__DIR__).'/App/Controllers/UserController.php';
 
     $controller = new UserController();
     print_r($controller->test());
 }
 
 if ($_SERVER['REQUEST_URI'] === '/OOP/Calculator/test') {
-    require_once '../App/Controllers/CalculatorController.php';
+    require_once dirname(__DIR__). '/App/Controllers/CalculatorController.php';
 
     $controller = new CalculatorController();
     print_r($controller->test());
 }
+
+
