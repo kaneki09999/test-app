@@ -3,10 +3,10 @@
 // For Strict Typing
 declare(strict_types = 1);
 
-use App\Controllers\CalculatorController;
-
 // // Load the File
 require dirname(__DIR__).'/../vendor/autoload.php';
+
+use App\Controllers\CalculatorController;
 
 // REQUEST HTTP POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Catch Error
         try {
             echo $obj->operations($data); // used the method
+            // echo CalculatorController::query(500);
         } catch (TypeError $e) {
             echo $obj::getErrorResponse() . " " . $e->getMessage();
         }

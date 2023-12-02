@@ -73,4 +73,9 @@ class CalculatorController extends BaseController {
 
     }
 
+    public static function query(int $params){
+        $result = $params + 5;
+        return $result;
+    }
+
 }
