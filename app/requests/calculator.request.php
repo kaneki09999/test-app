@@ -6,21 +6,21 @@ declare(strict_types = 1);
 // // Load the File
 require dirname(__DIR__).'/../vendor/autoload.php';
 
+// namespace alias/import
 use App\Controllers\CalculatorController;
+
+// Call the Class
+$obj = new CalculatorController();
 
 // REQUEST HTTP POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
            
-        // Set requested Data
         $data = array(
-            'operator'      => $_POST['operator'],
-            'first_number'  => (int)$_POST['first_number'], // type casting means 
-            'second_number' => (int)$_POST['second_number'], // it will convert the string into integers by using (int) 
+            'operator'      => isset($_POST['operator']) ? $_POST['operator']: $obj->request['operator'],
+            'first_number'  => isset($_POST['first_number']) ? $_POST['first_number']: $obj->request['first_number'],
+            'second_number' => isset($_POST['second_number']) ? $_POST['second_number']: $obj->request['second_number'],
         );
-        
-        // Call the Class
-        $obj = new CalculatorController();
-        
+
         // Catch Error
         try {
             echo $obj->operations($data); // used the method

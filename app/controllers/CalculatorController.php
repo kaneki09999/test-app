@@ -11,17 +11,17 @@ class CalculatorController extends BaseController {
     public string $operator;
     public int $num1;
     public int $num2;
-    
+    public $request;
+    public array $data;
+
     // Identifier
     const SUCCESS = 'success';
 
     // Initilize Object Properties
-    // public function __construct(string $operator, int $num1, int $num2)
-    // {
-    //     $this->operator = $one;
-    //     $this->num1     = $two;
-    //     $this->num2     = $three;
-    // }
+    public function __construct()
+    {
+        $this->request = $this->parseRequest();
+    }
 
     // Custom Method
     public function operations(array $data): string{
@@ -73,9 +73,24 @@ class CalculatorController extends BaseController {
 
     }
 
-    public static function query(int $params){
-        $result = $params + 5;
-        return $result;
+
+    public static function getName(): void{
+       self::SUCCESS;
+    }
+
+    public function setName(): string{
+        $name = $this->request['name'];
+        $email = $this->request['email'];
+        $age = $this->request['age'];
+
+        $response = array(
+            "status" => self::SUCCESS,
+            "name" => $name,
+            "email" => $email,
+            "age" => $age
+        );
+        return $this->jsonResponse($response);
     }
 
 }
+

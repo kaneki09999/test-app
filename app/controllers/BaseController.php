@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 class BaseController{
 
-    private string $request;
+    private $request;
 
     // Set Json Response 
     public function jsonResponse($params){
@@ -24,22 +24,7 @@ class BaseController{
         date_default_timezone_set('Asia/Manila');
         $timeStamp = time();
         
-        $response = array(
-         
-  
-                'CLASS'     => __CLASS__,
-                'DIRECTORY' => __DIR__,
-                'FILE'      => __FILE__,
-                'FUNCTION'  => __FUNCTION__,
-                'METHOD'    => __METHOD__,
-                'LINE'      => __LINE__,
-                'NAMESPACE' => __NAMESPACE__,
-
-        );
-
-
-
-        return $response;
+        return $timeStamp;
     }
 
 
