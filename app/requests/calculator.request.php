@@ -16,11 +16,11 @@ $obj = new CalculatorController();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
            
         $data = array(
-            'operator'      => isset($_POST['operator']) ? $_POST['operator']: $obj->request['operator'],
-            'first_number'  => isset($_POST['first_number']) ? $_POST['first_number']: $obj->request['first_number'],
-            'second_number' => isset($_POST['second_number']) ? $_POST['second_number']: $obj->request['second_number'],
+            'operator'      => $_POST['operator'] ??  $obj->request['operator'],
+            'first_number'  => $_POST['first_number'] ??  $obj->request['first_number'],
+            'second_number' => $_POST['second_number'] ??  $obj->request['second_number'],
         );
-
+       
         // Catch Error
         try {
             echo $obj->operations($data); // used the method
