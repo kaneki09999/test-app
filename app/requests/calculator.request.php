@@ -23,7 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
        
         // Catch Error
         try {
-            echo $obj->operations($data); // used the method
+            // var_dump($data);
+            $obj->operations($data); // used the method
+            echo $obj->answer();
             // echo CalculatorController::query(500);
         } catch (TypeError $e) {
             echo $obj::getErrorResponse() . " " . $e->getMessage();

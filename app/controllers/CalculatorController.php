@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 require_once dirname(__DIR__) . '/../vendor/autoload.php';
 
+
 class CalculatorController extends BaseController {
 
     use ExtraController;
@@ -12,8 +13,10 @@ class CalculatorController extends BaseController {
     public int $num1;
     public int $num2;
     public $request;
-    public array $data;
+    public $result;
 
+    private array $data;
+    
     // Identifier
     const SUCCESS = 'success';
 
@@ -24,7 +27,7 @@ class CalculatorController extends BaseController {
     }
 
     // Custom Method
-    public function operations(array $data): string{
+    public function operations(array $data){
         
         // Get Requested Data
         $this->operator     = $data['operator'];
@@ -55,9 +58,21 @@ class CalculatorController extends BaseController {
             'message'   => $this->extraMessage().$this->errorMessage(),
         );
         
-        return $this->jsonResponse($response);
+        $this->result = $result;
+        // return $this->jsonResponse($response);
     }
     
+    public function answer(){
+        
+        $response = array(
+            'status' => self::SUCCESS,
+            'method'   => parent::METHOD[0],
+            'answer' => $this->result,
+        );
+        return $this->jsonResponse($response);
+
+    }
+
     public static function getErrorResponse(){
         return "Invalid Operations";
     }
@@ -79,16 +94,18 @@ class CalculatorController extends BaseController {
     }
 
     public function setName(): string{
-        $name = $this->request['name'];
-        $email = $this->request['email'];
-        $age = $this->request['age'];
+
+        $name   = $this->request['name'];
+        $email  = $this->request['email'];
+        $age    = $this->request['age'];
 
         $response = array(
-            "status" => self::SUCCESS,
-            "name" => $name,
-            "email" => $email,
-            "age" => $age
+            "status"    => self::SUCCESS,
+            "name"      => $name,
+            "email"     => $email,
+            "age"       => $age
         );
+
         return $this->jsonResponse($response);
     }
 

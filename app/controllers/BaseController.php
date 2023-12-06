@@ -5,6 +5,11 @@ class BaseController{
 
     private $request;
 
+    const METHOD = [
+        'POST',
+        'GET'
+    ];
+
     // Set Json Response 
     public function jsonResponse($params){
         header('Content-Type: application/json');               // application type is json
