@@ -5,9 +5,12 @@ class BaseController{
 
     private $request;
 
+    const POST_METHOD = 'POST';
+    const GET_METHOD = 'GET';
+
     const METHOD = [
-        'POST',
-        'GET'
+        'POST' => self::POST_METHOD,
+        'GET' => self::GET_METHOD
     ];
 
     // Set Json Response 
@@ -31,6 +34,36 @@ class BaseController{
         
         return $timeStamp;
     }
+
+    // public function render(){
+
+    //     // $obj = array_merge($param,$data);
+
+    //     $obj = array(
+    //         'Users' => array(
+    //             'name' => 'whyllardermie',
+    //             'email' => 'whyllardermie@gmail.com'
+    //         ),
+    //     );
+
+    //     return $this->jsonResponse($obj);
+    // }
+
+    public function render(string $param, array $data){
+        $obj = array(
+            $param => $data
+        );
+        return $this->jsonResponse($obj);
+    }
+
+
+    public function response(string $param, array $data){
+        $obj = array(
+            $param => $data,
+        );
+        return $obj;
+    }
+    
 
 
 }

@@ -23,7 +23,7 @@ class CalculatorController extends BaseController {
     // Initilize Object Properties
     public function __construct()
     {
-        $this->request = $this->parseRequest();
+        $this->request = parent::parseRequest();
     }
 
     // Custom Method
@@ -59,16 +59,31 @@ class CalculatorController extends BaseController {
         );
         
         $this->result = $result;
+
         // return $this->jsonResponse($response);
     }
     
     public function answer(){
-        
+        $type = 'POST';
+
         $response = array(
-            'status' => self::SUCCESS,
-            'method'   => parent::METHOD[0],
-            'answer' => $this->result,
+            'status'    => self::SUCCESS,
+            'method'    => parent::METHOD[$type],
+            'answer'    => $this->result,
         );
+
+        // $response = parent::response('response',[
+        //     'status'    => self::SUCCESS,
+        //     'method'    => parent::METHOD[$type],
+        //     'result'    => $this->result,
+        // ]);
+
+        // return parent::render('Account',[
+        //     'name' => 'whyllardermie',
+        //     'email' => 'whyllardermie@gmail.com'
+        // ]);
+        // // Static    
+
         return $this->jsonResponse($response);
 
     }
