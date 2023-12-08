@@ -1,10 +1,9 @@
 <?php
 namespace App\Controllers;
 
-require_once dirname(__DIR__) . '/../vendor/autoload.php';
+use App\Controllers\BaseController as Controller;
 
-
-class CalculatorController extends BaseController {
+class CalculatorController extends Controller{
 
     use ExtraController;
 
@@ -45,7 +44,7 @@ class CalculatorController extends BaseController {
 
         $response = array(
             'result'    => $result,
-            'others'    => array(
+            'MagicConstant' => array(
                 'CLASS'     => __CLASS__,
                 'DIRECTORY' => __DIR__,
                 'FILE'      => __FILE__,
@@ -69,6 +68,7 @@ class CalculatorController extends BaseController {
         $response = array(
             'status'    => self::SUCCESS,
             'method'    => parent::METHOD[$type],
+            'operator'  => $this->operator,
             'answer'    => $this->result,
         );
 
@@ -85,7 +85,6 @@ class CalculatorController extends BaseController {
         // // Static    
 
         return $this->jsonResponse($response);
-
     }
 
     public static function getErrorResponse(){
@@ -103,7 +102,6 @@ class CalculatorController extends BaseController {
 
     }
 
-
     public static function getName(): void{
        self::SUCCESS;
     }
@@ -120,7 +118,7 @@ class CalculatorController extends BaseController {
             "email"     => $email,
             "age"       => $age
         );
-
+        
         return $this->jsonResponse($response);
     }
 

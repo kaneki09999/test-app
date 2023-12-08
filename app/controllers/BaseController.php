@@ -1,7 +1,9 @@
 <?php
 namespace App\Controllers;
 
-class BaseController{
+use App\Controllers\Abstract\PaymentAbstract;
+
+class BaseController extends PaymentAbstract {
 
     private $request;
 
@@ -35,6 +37,16 @@ class BaseController{
         return $timeStamp;
     }
 
+    public function visaPayment(): string
+    {
+        return "Hoy Bayad Muna Bago Sakay!";
+        // Test Abstract Method
+    }
+
+    public function withDrawProcess($name, $id){}  
+    public function paymentProcess(){}
+    public function payNow(){}
+
     // public function render(){
 
     //     // $obj = array_merge($param,$data);
@@ -64,6 +76,4 @@ class BaseController{
         return $obj;
     }
     
-
-
 }
