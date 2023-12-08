@@ -1,4 +1,5 @@
 <?php
+namespace App\Models;
 
 class BaseModel{
 
@@ -10,4 +11,27 @@ class BaseModel{
     // in array
     // query
 
+    public function orderBy(){
+    }
+
+    public function where(){
+
+    }
+
+    public function groupBy(){
+
+    }
+    
+    public function join(){
+
+    }
+
+    public function union(){
+
+    }
+    
+    public function query(){
+
+    }
+    
 }
