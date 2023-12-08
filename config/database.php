@@ -1,12 +1,15 @@
 <?php
 namespace Config;
 
+require_once dirname(__DIR__).'/vendor/autoload.php';
+
+use App\Models\BaseModel;
 use PDO;
 use TypeError;
 
-class Database{
+class Database extends BaseModel{
 
-    protected array $creds = [
+    private array $creds = [
         'host'          => 'localhost',
         'username'      => 'root',
         'password'      => '',
@@ -18,7 +21,7 @@ class Database{
         'FAILED'    => 'Connection Failed',
     ];
 
-    protected function connection(){
+    protected function connect(){
         
         // DataSource Name
         $dsn = 'mysql:host='.$this->creds['host'].';dbname='.$this->creds['database_name'];
@@ -52,3 +55,6 @@ class Database{
         return $response;
     }
 }
+
+// $obj = new Database();
+// print_r($obj->connect());

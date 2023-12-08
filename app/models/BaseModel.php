@@ -3,6 +3,7 @@ namespace App\Models;
 
 class BaseModel{
 
+    private $request;
     // order by
     // group by
     // where
@@ -10,6 +11,9 @@ class BaseModel{
     // union
     // in array
     // query
+
+
+
 
     public function orderBy(){
     }
