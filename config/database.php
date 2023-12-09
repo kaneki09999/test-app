@@ -1,11 +1,8 @@
 <?php
 namespace Config;
 
-require_once dirname(__DIR__).'/vendor/autoload.php';
-
 use App\Models\BaseModel;
 use PDO;
-use TypeError;
 
 class Database extends BaseModel{
 
@@ -38,22 +35,10 @@ class Database extends BaseModel{
             PDO::FETCH_ASSOC
         );
 
-        $response = $this->checkConnection($pdo);
+        return $pdo; 
 
-        return $response;  
     }
 
-    protected function checkConnection($param){
-        try {
-            if ($param) {
-                $response = self::DB_CONNECTION['SUCCESS'];
-            }
-        } catch (TypeError $e) {
-           $response = $e->getMessage();
-        }
-
-        return $response;
-    }
 }
 
 // $obj = new Database();

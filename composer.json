@@ -4,7 +4,8 @@
             "App\\Controllers\\": "app/controllers",
             "App\\Models\\": "app/models",
             "App\\Views\\": "app/views",
-            "App\\Requests\\": "app/requests"
+            "App\\Requests\\": "app/requests",
+            "Config\\":"config/"
         }
     }
 }

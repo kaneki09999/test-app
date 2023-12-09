@@ -12,9 +12,6 @@ class BaseModel{
     // in array
     // query
 
-
-
-
     public function orderBy(){
     }
 
@@ -37,5 +34,10 @@ class BaseModel{
     public function query(){
 
     }
-    
+    public function jsonResponse($params){
+        header('Content-Type: application/json');               // application type is json
+        $response = json_encode($params, JSON_PRETTY_PRINT);    // turn into json format
+        
+        return $response;   // e.g Output: { "result": 300,"status": "success"}
+    }
 }

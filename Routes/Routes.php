@@ -44,9 +44,10 @@ if ($_SERVER['REQUEST_URI'] === '/OOP/Database/connection') {
     require_once dirname(__DIR__).'/Config/Database.php';
 }
 
-if ($_SERVER['REQUEST_URI'] === '/OOP/Models/users') {
+if ($_SERVER['REQUEST_URI'] === '/OOP/Models/getUsers') {
     require_once dirname(__DIR__).'/App/Models/UserModel.php';
 }
+
 // if ($_SERVER['REQUEST_URI'] === '/OOP/Calculator/operations') {
 //     $obj = new CalculatorController();
 //     $data = array(
