@@ -7,7 +7,7 @@ require_once dirname(__DIR__).'/vendor/autoload.php';
 
 use App\Controllers\CalculatorController;
 use App\Controllers\UserController;
-
+use App\Models\UserModel;
 
 // if (isset($_GET['action'])) {
 //     $action = $_GET['action'];
@@ -42,10 +42,15 @@ if ($_SERVER['REQUEST_URI'] === '/OOP/Calculator/operations') {
 
 if ($_SERVER['REQUEST_URI'] === '/OOP/Database/connection') {
     require_once dirname(__DIR__).'/Config/Database.php';
+    $obj = new UserModel();
+    print_r($obj->testConnection());
 }
 
 if ($_SERVER['REQUEST_URI'] === '/OOP/Models/getUsers') {
     require_once dirname(__DIR__).'/App/Models/UserModel.php';
+    $obj = new UserModel();
+    print_r($obj->getUsers());
+
 }
 
 // if ($_SERVER['REQUEST_URI'] === '/OOP/Calculator/operations') {

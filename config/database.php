@@ -34,12 +34,11 @@ class Database extends BaseModel{
             PDO::ATTR_DEFAULT_FETCH_MODE, 
             PDO::FETCH_ASSOC
         );
-
+       
         return $pdo; 
 
     }
 
+
 }
 
-// $obj = new Database();
-// print_r($obj->connect());
