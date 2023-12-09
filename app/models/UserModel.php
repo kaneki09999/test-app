@@ -59,6 +59,32 @@ class UserModel extends Database{
         return $this->jsonResponse($result);
     }
 
+    public function addUser(string $name, string $email, string $contact_no){
+        /* Begin a transaction, turning off autocommit */
+        $this->connect()->beginTransaction();
 
+        $sql = "INSERT INTO users (name, email, contact_no) VALUES (:name, :email, :contact_no)";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':contact_no', $contact_no);
+        
+        $result = [
+            ':name' => $name,
+            ':email' => $email,
+            ':contact_no' => $contact_no,
+        ];
+        $stmt->execute($result);
+
+        $response = array(
+            'status' => 'ok',
+            'lastInsertedId' => $this->connect()->lastInsertId(),
+        );
+
+        /* Commit the changes */
+        // $this->connect()->commit();
+        
+        return $this->jsonResponse($response);
+    }
 }
 

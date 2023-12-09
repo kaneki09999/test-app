@@ -18,11 +18,24 @@ if (preg_match($pattern, $requestPath, $matches)) {
     $userData = $obj->getUser($userId);
 
     print_r($userData);
-} 
-
-
-if (!preg_match($pattern, $requestPath, $matches)) {
-    // Handle invalid route
-    header("HTTP/1.1 404 Not Found");
-    echo "404 Not Found";
+} else{
+    // // Handle invalid route
+    // header("HTTP/1.1 404 Not Found");
+    // echo "404 Not Found";
 }
+
+if ($_SERVER['REQUEST_URI'] === '/OOP/Models/addUser') {
+    require_once dirname(__DIR__).'/App/Models/UserModel.php';
+    $obj = new UserModel();
+
+    $data = [
+        'name' => 'eduardo ermie',
+        'email' => 'eduardoermie@gmail.com',
+        'contact_no' => '09095547291'
+    ];
+
+    print_r($obj->addUser($data['name'], $data['email'], $data['contact_no']));
+}
+
+
+
