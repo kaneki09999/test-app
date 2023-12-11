@@ -1,10 +1,9 @@
 <?php
 namespace Config;
 
-use App\Models\BaseModel;
 use PDO;
 
-class Database extends BaseModel{
+class Database{
 
     private array $creds = [
         'host'          => 'localhost',
@@ -41,4 +40,3 @@ class Database extends BaseModel{
 
 
 }
-

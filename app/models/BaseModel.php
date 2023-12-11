@@ -1,7 +1,10 @@
 <?php
 namespace App\Models;
 
-class BaseModel{
+use Config\Database;
+use PDO;
+
+class BaseModel extends Database{
 
     private $request;
     // order by
@@ -11,15 +14,44 @@ class BaseModel{
     // union
     // in array
     // query
-
-    public function orderBy(){
+    
+    // Fetch All Columns
+    public function get_all($table){
+        $sql = "SELECT * FROM ".$table;
+        $stmt = parent::connect()->query($sql);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 
-    public function where(){
+    // get_where($this->tbl_name, array('id' => $id)); 
+    // public function get_where(array $param){
 
+    //     // Use a prepared statement to prevent SQL injection
+
+    //     $result = array();
+    //     foreach ($param as $key) {
+    //         $result[] = $key .' = :'.$key;
+    //     }
+    //     $imp = implode(' and ',$result);
+    //     $sql = "SELECT * FROM ".$this->table." WHERE".$imp;
+
+    //     $stmt = $this->conn->prepare($sql);
+
+    //     foreach ($param as $field => $value) {
+    //         $stmt->bindParam(':'.$field, $value, PDO::PARAM_INT);
+    //     }
+    //     // $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+        
+    //     $stmt->execute();
+    //     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    //     return $this->jsonResponse($result);
+    // }
+
+    public function order_by(){
     }
 
-    public function groupBy(){
+    public function group_by(){
 
     }
     
@@ -40,4 +72,12 @@ class BaseModel{
         
         return $response;   // e.g Output: { "result": 300,"status": "success"}
     }
+
+    public function parseRequest(){
+        $data = file_get_contents('php://input');
+        $this->request = json_decode($data, true);
+
+        return $this->request;
+    }
+
 }

@@ -1,34 +1,38 @@
 <?php
 namespace App\Models;
 
-use Config\Database;
 use PDO;
 
-class UserModel extends Database{
+// class UserModel extends Database{
     
-    private $conn;
+class UserModel extends BaseModel{
 
-    public function __construct(){
-        $this->conn = parent::connect();
+    private string $table = 'users';
+
+    // Fetch Users Data
+    protected function show(){
+        $query = $this->get_all($this->table);
+        return $query;
     }
 
-    public function testConnection(){
-        
-        if ($this->conn) {
-            $status = parent::DB_CONNECTION['SUCCESS'];
-        }
-        $response = array(
-            'status' => $status,
-        );
-        
-        return $this->jsonResponse($response);
-    }
+    
+    protected function getRows(){
+        // $sql = 'SELECT * FROM '.$this->table;
+        // $stmt = $this->connect()->query($sql);
 
-    public function getAllUsers(){
+        // $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // $query = parent::get_all($this->table);
+
+        // return $query;
+    }
+        
+
+    protected function getAllUsers(){
         
         // $result = [];
 
-        $sql = 'SELECT * FROM users';
+        $sql = 'SELECT * FROM '.$this->table;
         $stmt = $this->connect()->query($sql);
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -36,7 +40,8 @@ class UserModel extends Database{
         //    $result[] = $row;
         // }
         
-        return $this->jsonResponse($result);
+        return $result;
+ 
 
     }
 
@@ -48,9 +53,9 @@ class UserModel extends Database{
 
     //     return $this->jsonResponse($result);
     // }
-    public function getUser($userId){
+    protected function getUser($userId){
         // Use a prepared statement to prevent SQL injection
-        $sql = "SELECT * FROM users WHERE id = :id";
+        $sql = "SELECT * FROM ".$this->table." WHERE id = :id";
         $stmt = $this->connect()->prepare($sql);
         $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
         $stmt->execute();
@@ -59,20 +64,28 @@ class UserModel extends Database{
         return $this->jsonResponse($result);
     }
 
-    public function addUser(string $name, string $email, string $contact_no){
+    public function fetchUser(array $param){
+        // $query = parent::get_where($param);
+        // return $this->jsonResponse($query);
+    }
+
+
+
+    protected function addUser(array $data){
         /* Begin a transaction, turning off autocommit */
         $this->connect()->beginTransaction();
 
-        $sql = "INSERT INTO users (name, email, contact_no) VALUES (:name, :email, :contact_no)";
+        $sql = "INSERT INTO ".$this->table." (name, email, contact_no) VALUES (:name, :email, :contact_no)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':contact_no', $contact_no);
+        
+        $stmt->bindParam(':name', $data['name']);
+        $stmt->bindParam(':email', $data['email']);
+        $stmt->bindParam(':contact_no', $data['contact_no']);
         
         $result = [
-            ':name' => $name,
-            ':email' => $email,
-            ':contact_no' => $contact_no,
+            ':name' => $data['name'],
+            ':email' => $data['email'],
+            ':contact_no' => $data['contact_no'],
         ];
         $stmt->execute($result);
 

@@ -1,18 +1,38 @@
 <?php
 namespace App\Controllers;
 
-require_once dirname(__DIR__) . '/../vendor/autoload.php';
+use App\Models\UserModel;
 
-class UserController extends BaseController{
+class UserController extends UserModel{
 
-    public function test(){
+    private $request;
 
+    public function __construct(){
+        $this->request = parent::parseRequest();
+    }
+
+    public function getUsers(){
+
+        $query = $this->show();
+        
         $response = array(
-            'result' => 'success',
-            'timeStamp' => $this->ping(),
+          'status' => 'success',
+          'result' => $query  
         );
-
         return $this->jsonResponse($response);
+    }
+
+    public function create(){
+        
+    }
+
+
+    public function edit(){
 
     }
-}
+
+    public function updte(){
+
+    }
+
+}   

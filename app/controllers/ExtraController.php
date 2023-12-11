@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 
-trait ExtraController{
+trait ExtraController {
     
     public function extraMessage(): string{
         return "Test Traits";

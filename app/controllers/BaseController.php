@@ -1,11 +1,14 @@
 <?php
 namespace App\Controllers;
 
+defined('BASEPATH') OR exit('No direct script access allowed'); 
+
 use App\Controllers\Abstract\PaymentAbstract;
 
 class BaseController extends PaymentAbstract {
 
     private $request;
+    private $table;
 
     const POST_METHOD = 'POST';
     const GET_METHOD = 'GET';
@@ -75,5 +78,34 @@ class BaseController extends PaymentAbstract {
         );
         return $obj;
     }
+
+    public function orderBy(){
+    }
+
+    public function all(){
+        // $sql = 'SELECT * FROM '.$this->table;
+        // $stmt = $this->connect()->query($sql);
+
+        // $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // return $result;
+    }
+
+    public function groupBy(){
+
+    }
+    
+    public function join(){
+
+    }
+
+    public function union(){
+
+    }
+    
+    public function query(){
+        
+    }
+
     
 }
