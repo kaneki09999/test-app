@@ -1,9 +1,8 @@
 <?php
 namespace App\Controllers;
 
-use App\Controllers\BaseController as Controller;
 use App\Models\UserModel as Insert;
-class CalculatorController extends Insert{
+class deletecontroller extends Insert{
 
     use ExtraController;
 
@@ -34,63 +33,9 @@ class CalculatorController extends Insert{
     }
 
     // Custom Method
-    public function operations(array $data){
-        
-            $this->firstname    = $data['first_name'];
-            $this->lastname    = $data['last_name'];
-            $this->age          = $data['age'];
-            $this->email        = $data['email'];
-            $this->contact        = $data['contact'];
-            $this->address        = $data['address'];
+    public function operations($id){
 
-
-            // $params = [
-            //     'first_name' => $data['firstname'],
-            //     'last_name' =>  $data['lastname'],
-            //     'age' => $data['age'],
-            //     'email' => $data['email'],
-            //     'address' => $data['address'],
-            //     'contact' => $data['contact'],
-            // ];
-            // print_r($params); exit;
-            // $result = array ($this->firstname, $this->age, $this->email);
-      
-
-
-        // // Get Requested Data
-        // $this->operator     = $data['operator'];
-        // $this->num1         = $data['first_number'];
-        // $this->num2         = $data['second_number'];
-        
-        // // Computation
-        // $result = match ($this->operator) {
-        //     'addition'          => $this->num1 + $this->num2,
-        //     'subtraction'       => $this->num1 - $this->num2,
-        //     'multiplication'    => $this->num1 * $this->num2,
-        //     'division'          => $this->num1 / $this->num2,
-        //     default             => $this->getErrorResponse(),
-        // };
-
-
-        // $response = array(
-        //     'result'    => $result,
-        //     'MagicConstant' => array(
-        //         'CLASS'     => __CLASS__,
-        //         'DIRECTORY' => __DIR__,
-        //         'FILE'      => __FILE__,
-        //         'FUNCTION'  => __FUNCTION__,
-        //         'METHOD'    => __METHOD__,
-        //         'LINE'      => __LINE__,
-        //         'NAMESPACE' => __NAMESPACE__,
-        //     ),
-        //     'status'    => self::SUCCESS,
-        //     'message'   => $this->extraMessage().$this->errorMessage(),
-        // );
-        
-        // $this->result = $result;
-
-        // Model
-        return $this->post($data);
+        return $this->remove($id);
     }
 
 
