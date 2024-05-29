@@ -91,6 +91,9 @@ class CalculatorController extends Insert{
 
         // Model
         return $this->post($data);
+
+
+        // new chANGES
     }
 
 
