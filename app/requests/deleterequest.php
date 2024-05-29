@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         $id = $_POST['id'];
 
-           $obj->operations($id); // used the method
+           $obj->operations($id);
             
 
         header("Location: http://localhost/OOP/Public/index.php");

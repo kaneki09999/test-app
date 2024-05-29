@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $search = $_POST['search'];
 
            $obj->operations($search);
-            echo $obj->answer();
 
 
         

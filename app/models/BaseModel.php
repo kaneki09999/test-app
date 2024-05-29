@@ -166,7 +166,7 @@ class BaseModel extends Database{
             $conn = $this->connect();
     
             $sql = "SELECT * FROM {$table} WHERE first_name LIKE :search
-            OR last_name LIKE :search OR age LIKE :search OR email LIKE :search";
+            OR last_name LIKE :search OR age LIKE :search";
             $sth = $conn->prepare($sql);
     
             $searchTerm = '%' . $search . '%';
