@@ -26,7 +26,7 @@ class UserModel extends BaseModel{
         return parent::delete($data, $this->table);
     }
 
-    public function post(array $data){
+    public function post(array $data){   
         return parent::insert($data, $this->table);
     }
 

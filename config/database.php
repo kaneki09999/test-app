@@ -14,12 +14,11 @@ class Database{
     ];
 
     public function connect(){
-        // DataSource Name
         $dsn = 'mysql:host='.$this->creds['host'].';dbname='.$this->creds['database_name'];
         
         try {
             // PDO Connection
-            $pdo = new PDO(
+            $pdo = new PDO( 
                 $dsn,
                 $this->creds['username'],
                 $this->creds['password']
@@ -33,6 +32,6 @@ class Database{
             echo "Connection failed: " . $e->getMessage();
             return null;
         }
-    }
+    }   
 }
 ?>

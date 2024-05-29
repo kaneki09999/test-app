@@ -96,7 +96,7 @@ class CalculatorController extends Insert{
 
     
 
-    
+     
     public function answer(){
         $type = 'POST';
 
